@@ -1,0 +1,45 @@
+﻿@model List<PetGrooming.Models.Pet>
+
+@{
+    //title attribute
+    ViewBag.Title = "List";
+}
+
+<h2>List of Pets</h2>
+@if (!String.IsNullOrEmpty(Request["add"]) && Request["add"].Equals("True"))
+{
+    <div class="alert alert-success">Pet successfully added.</div>
+}
+else if (!String.IsNullOrEmpty(Request["delete"]) && Request["delete"].Equals("True"))
+{
+    <div class="alert alert-success">Pet successfully deleted.</div>
+}
+<div class="pull-right">
+    <a class="btn btn-primary" href="Add" role="button">Add New Pet</a>
+</div>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Species</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Color</th>
+            <th scope="col">Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var Pet in Model)
+            {
+                <tr onclick="window.location='/Pet/Show/@Pet.PetID';" style="cursor:pointer;">
+                    <th scope="row">@Pet.PetName</th>
+                    <td>@Pet.Species.Name</td>
+                    <td>@Pet.Sex</td>
+                    <td>@Pet.Color</td>
+                    <td>@Pet.Weight kg</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

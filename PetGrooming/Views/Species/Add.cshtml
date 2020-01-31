@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add a New Species</h2>
+<form method="POST" action="/Species/Add">
+    <div class="form-group">
+        <label for="SpeciesName">Name:</label>
+        <input id="SpeciesName" type="text" name="SpeciesName" class="form-control" />
+    </div>
+
+
+    <a class="btn btn-secondary" href="javascript:history.go(-1)" role="button">Cancel</a>
+    <input type="submit" id="submit" value="Add Species" class="btn btn-primary" />
+</form>

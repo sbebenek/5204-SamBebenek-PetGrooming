@@ -1,0 +1,70 @@
+﻿@model PetGrooming.Models.Pet
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show Pet</h2>
+
+@if (!String.IsNullOrEmpty(Request["update"]) && Request["update"].Equals("True"))
+{
+    <div class="alert alert-success">Pet successfully updated.</div>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Name:</div>
+        <div class="col-lg-3">@Model.PetName</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Species:</div>
+        <div class="col-lg-3">@Model.Species.Name</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Sex:</div>
+        <div class="col-lg-3">@Model.Sex</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Weight:</div>
+        <div class="col-lg-3">@Model.Weight kg</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Color:</div>
+        <div class="col-lg-3">@Model.Color</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">Notes:</div>
+        <div class="col-lg-3">@Model.Notes</div>
+    </div>
+</div>
+
+<a class="btn btn-secondary" href="javascript:history.go(-1)" role="button">Go Back</a>
+<a class="btn btn-primary" href="../Update/@Model.PetID" role="button">Update Pet</a>
+<a data-toggle="modal" data-target="#modal-@Model.PetID" class="btn btn-danger">Delete Pet</a>
+<!-- Reference: below code from modal example on the bootstrap website -->
+<div class="modal fade" id="modal-@Model.PetID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                Are you sure you want to delete <strong>@Model.PetName</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="window.location='../Delete/@Model.PetID';">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

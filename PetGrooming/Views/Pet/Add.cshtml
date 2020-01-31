@@ -1,0 +1,60 @@
+﻿@model  List<PetGrooming.Models.Species>
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add a New Pet</h2>
+
+<form method="POST" action="/Pet/Add">
+    <div class="form-group">
+        <label for="PetName">Name:</label>
+        <input id="PetName" type="text" name="PetName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="SpeciesID">Species:</label>
+        <select class="form-control" id="SpeciesID" name="SpeciesID">
+            @{
+                foreach (var species in Model)
+                {
+                    <option value="@species.SpeciesID">@species.Name</option>
+
+                }
+            }
+        </select>
+        <a href="/Species/Add"><small class="form-text text-muted">Add new species?</small></a>
+
+    </div>
+
+    <div><span>Sex:</span></div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Male" checked>
+        <label class="form-check-label" for="Sex">
+            Male
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Female">
+        <label class="form-check-label" for="Sex">
+            Female
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="PetWeight">Weight (kg):</label>
+        <input id="PetWeight" type="number" name="PetWeight" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="PetColor">Color:</label>
+        <input id="PetColor" type="text" name="PetColor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="PetNotes">Notes:</label>
+        <textarea class="form-control" id="PetNotes" name="PetNotes" rows="3"></textarea>
+    </div>
+
+    <a class="btn btn-secondary" href="javascript:history.go(-1)" role="button">Cancel</a>
+    <input type="submit" id="submit" value="Add Pet" class="btn btn-primary" />
+</form>

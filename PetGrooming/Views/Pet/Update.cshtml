@@ -1,0 +1,84 @@
+﻿@model PetGrooming.Models.ViewModels.UpdatePet
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<form method="POST" action="/Pet/Update/@Model.pet.PetID">
+    <div class="form-group">
+        <label for="PetName">Name:</label>
+        <input id="PetName" type="text" name="PetName" class="form-control" value="@Model.pet.PetName" />
+    </div>
+    <label for="SpeciesID">Species:</label>
+    <select class="form-control" id="SpeciesID" name="SpeciesID">
+        @{
+            foreach (var Species in Model.species)
+            {
+                string selected = "";
+                if (Species.SpeciesID == Model.pet.SpeciesID)
+                {
+                    selected = "selected";
+                }
+                <option value="@Species.SpeciesID" @selected>@Species.Name</option>
+            }
+        }
+    </select>
+
+    <div><span>Sex:</span></div>
+    @{
+        if (Convert.ToString(Model.pet.Sex) == "Male")
+        {
+            //if the pet is male
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Male" checked>
+                <label class="form-check-label" for="Sex">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Female">
+                <label class="form-check-label" for="Sex">
+                    Female
+                </label>
+            </div>
+        }
+        else
+        {
+            //if the pet is female
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Male">
+                <label class="form-check-label" for="Sex">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Sex" id="Sex" value="Female" checked>
+                <label class="form-check-label" for="Sex">
+                    Female
+                </label>
+            </div>
+        }
+    }
+
+    <div class="form-group">
+        <label for="PetWeight">Weight (kg):</label>
+        <input id="PetWeight" type="number" name="PetWeight" class="form-control" value="@Model.pet.Weight" />
+    </div>
+
+    <div class="form-group">
+        <label for="PetColor">Color:</label>
+        <input id="PetColor" type="text" name="PetColor" class="form-control" value="@Model.pet.Color" />
+    </div>
+
+    <div class="form-group">
+        <label for="PetNotes">Notes:</label>
+        <textarea class="form-control" id="PetNotes" name="PetNotes" rows="3">@Model.pet.Notes</textarea>
+    </div>
+
+    <a class="btn btn-secondary" href="javascript:history.go(-1)" role="button">Cancel</a>
+    <input type="submit" id="submit" value="Update Pet" class="btn btn-primary" />
+
+
+</form>
