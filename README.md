@@ -6,7 +6,7 @@ pet grooming business, and contains CRUD functionality for pet and species table
 <li>Bootstrap</li>
 <li>jQuery</li>
 </ul>
-<i>Below cloning instructions are from the original class example</i>
+<i>Below cloning instructions are on how to get the EF6 database working, and are from the original class example</i>
 <h2>Updating an existing repo steps</h2>
 <ol>
   <li>run git stash to avoid conflicts between remote and local repository</li>
